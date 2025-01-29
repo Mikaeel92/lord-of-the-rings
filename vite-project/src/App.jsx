@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar, Feed, CardDetail, SearchFeed } from './components'
 
 const App = () => (
-  
+
     <BrowserRouter>
-    <div className='bg-slate-200'>
+    <div className='bg-slate-200 w-screen h-screen flex'>
     <Navbar/>
       <Routes>
         <Route exact path='/' element={<Feed/>}/>
