@@ -24,7 +24,7 @@ const SearchBar = () => {
         value={searchItems} 
         onChange={(e) => setSearchItems(e.target.value)}
         placeholder='Search...'
-        className='p-2 outline-none rounded-md font-semibold'/>
+        className='p-2 outline-none rounded-md font-semibold bg-slate-200 shadow-md'/>
         <FaSearch className='ml-4' onClick={submitForm}/>
     </form>
   )

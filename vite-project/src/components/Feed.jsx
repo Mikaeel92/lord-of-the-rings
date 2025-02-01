@@ -1,8 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import OneRing from '../assets/images/the-one-ring.jpg'
 import { Link } from 'react-router-dom'
 
 const Feed = () => {
+
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
+
+  const fetchFromApi = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch ('https://lotrapi.co/api/v1/characters')
+      const data = await response.json()
+      console.log(data)
+      if(data && data.length) {
+        setLoading(false) 
+        setData(data)
+      }
+    } catch (error) {
+      setLoading(false)
+      setErrorMsg(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchFromApi()
+  },[])
+
+  if(loading === true) {
+    <div>Loading...please wait</div>
+  }
+
+  if (errorMsg) {
+    <div>Error...{errorMsg}</div>
+  }
+
   return (
     <div className='w-screen h-screen flex flex-col items-center justify-center gap-4 bg-gray-100'>
         <Link to='/oneRing'>
@@ -12,7 +45,11 @@ const Feed = () => {
         <h1 className='font-bold text-3xl text-red-800'>"Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatu"</h1>
         <h2 className='text-2xl text-gray-900 font-bold'>One Ring to find them, One Ring to bring them all and in the darkness bind them</h2>
         </div>
-
+        <div>
+          {data.map((item, index) => (
+              <Card key={index} item={item}/>
+            ))}
+        </div>
     </div>
   )
 }
