@@ -46,12 +46,12 @@ const CharacterCard = ({characterData}) => {
     }]
 
   return (
-    <div className='bg-blue-300 p-4 gap-2 flex flex-col rounded-md border shadow-md'>
+    <div className='p-4 gap-2 flex flex-col rounded-md border border-gray-500'>
         <h1>{characterData.name}</h1>
         <h2>{characterData.gender}</h2>
         <p>{characterData.weapons}</p>
         <img alt='profile'
-        className='w-52 h-52'
+        className='h-[200px] w-[200px]'
         src={characterData.id === characterImage.id ? characterImage.image : null}/>
     </div>
   )

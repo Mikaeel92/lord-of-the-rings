@@ -46,7 +46,7 @@ const Feed = () => {
         <h1 className='font-bold text-3xl text-red-800'>"Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatu"</h1>
         <h2 className='text-2xl text-gray-900 font-bold'>One Ring to find them, One Ring to bring them all and in the darkness bind them</h2>
         </div>
-        <div>
+        <div className='flex flex-col gap-4 items-center justify-center'>
              <Characters data={data}/>
         </div>
     </div>
